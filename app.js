@@ -9,35 +9,37 @@ const peptides = [
   },
   {
     name: "Tesamorelin",
-    summary: "A growth hormone releasing peptide studied for visceral fat reduction.",
+    summary: "Growth hormone releasing peptide studied for visceral fat reduction.",
     effects: {
       studied: ["fat metabolism changes", "IGF-1 increase"],
-      risks: ["possible glucose changes", "requires clinical supervision in medical use"]
+      risks: ["possible glucose changes", "clinical supervision required in research use"]
     }
   },
   {
     name: "Ipamorelin",
-    summary: "A growth hormone secretagogue studied in research settings.",
+    summary: "Growth hormone secretagogue studied in research settings.",
     effects: {
       studied: ["growth hormone release"],
-      risks: ["limited long-term human studies"]
+      risks: ["limited long-term human data"]
     }
   },
   {
     name: "Retatrutide",
-    summary: "Multi-receptor agonist studied for metabolic effects.",
+    summary: "Triple receptor agonist studied for metabolic effects.",
     effects: {
-      studied: ["weight loss effects in trials", "glucose regulation"],
-      risks: ["GI side effects in studies", "not fully understood long-term"]
+      studied: ["weight loss in trials", "glucose regulation"],
+      risks: ["GI side effects in studies", "long-term unknowns"]
     }
   }
 ];
 
-// Build home page list (only runs on index.html)
-if (document.getElementById("list")) {
-  const list = document.getElementById("list");
+const list = document.getElementById("list");
+const search = document.getElementById("search");
 
-  peptides.forEach((p, index) => {
+function render(items) {
+  list.innerHTML = "";
+
+  items.forEach((p, index) => {
     const card = document.createElement("div");
     card.className = "card";
 
@@ -56,7 +58,16 @@ function openPeptide(i) {
   window.location.href = "detail.html";
 }
 
-// Register service worker
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
+// Search logic
+search.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+
+  const filtered = peptides.filter(p =>
+    p.name.toLowerCase().includes(value)
+  );
+
+  render(filtered);
+});
+
+// initial load
+render(peptides);

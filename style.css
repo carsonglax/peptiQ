@@ -1,21 +1,37 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background: #f4f4f4;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0f0f12;
+  color: white;
   margin: 0;
   padding: 20px;
 }
 
-.card {
-  background: white;
-  padding: 15px;
-  margin: 10px auto;
-  width: 90%;
-  max-width: 400px;
+h1 {
+  text-align: center;
+}
+
+#search {
+  width: 100%;
+  padding: 12px;
   border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.card {
+  background: #1c1c22;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 button {
+  background: #4c6fff;
+  color: white;
+  border: none;
   padding: 10px;
+  border-radius: 8px;
   margin-top: 10px;
 }
