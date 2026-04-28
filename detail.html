@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peptide Detail</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <button onclick="window.location.href='index.html'">⬅ Back</button>
+
+  <h1 id="name"></h1>
+  <p id="summary"></p>
+
+  <h3>Studied Effects</h3>
+  <ul id="studied"></ul>
+
+  <h3>Known Risks / Unknowns</h3>
+  <ul id="risks"></ul>
+
+  <script src="app.js"></script>
+  <script>
+    const p = JSON.parse(localStorage.getItem("selectedPeptide"));
+
+    document.getElementById("name").innerText = p.name;
+    document.getElementById("summary").innerText = p.summary;
+
+    p.effects.studied.forEach(e => {
+      const li = document.createElement("li");
+      li.innerText = e;
+      document.getElementById("studied").appendChild(li);
+    });
+
+    p.effects.risks.forEach(r => {
+      const li = document.createElement("li");
+      li.innerText = r;
+      document.getElementById("risks").appendChild(li);
+    });
+  </script>
+
+</body>
+</html>
